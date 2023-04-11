@@ -1,0 +1,48 @@
+﻿@page
+@model Nueva_Veterinaria.Pages.DeleteModel
+@{
+}
+
+<h2>Borrar paciente</h2>
+<h3>¿Estas seguro de que quieres eliminar este paciente?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.animal.Nombre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.animal.Nombre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.animal.Especie)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.animal.Especie)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.animal.Edad)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.animal.Edad)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.animal.Diagnostico)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.animal.Diagnostico)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.animal.FechaIngreso)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.animal.FechaIngreso)
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="animal.Id" />
+        <input type="submit" value="Borrar" class="btn btn-danger" /> |
+        <a asp-page="./Index">Regresar a la lista</a>
+    </form>
+</div>

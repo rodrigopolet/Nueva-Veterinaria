@@ -1,0 +1,63 @@
+﻿@page
+
+@model CreateModel
+@{
+    ViewData["Title"] = "Crear nuevo paciente";
+}
+
+<h2>Crear nuevo paciente</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="animal.Nombre" class="control-label"></label>
+                <input asp-for="animal.Nombre" class="form-control" />
+                <span asp-validation-for="animal.Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="animal.Especie" class="control-label"></label>
+                <select asp-for="animal.Especie" class="form-control">
+                    <option value="">-- Selecciona una Especie --</option>
+                    <option value="Perro">Perro</option>
+                    <option value="Gato">Gato</option>
+                    <option value="Lagarto">Lagarto</option>
+                    <option value="Caballo">Caballo</option>
+                    <option value="Pez">Pez</option>
+                    <option value="Insecto">Insecto</option>
+                    <option value="Serpiente">Serpiente</option>
+                    <option value="Conejo">Conejo</option>
+                    <option value="Jirafa">Jirafa</option>
+                    <option value="Leon">Leon</option>
+                    <option value="Tigre">Tigre</option>
+                    <option value="Jaguar">Jaguar</option>
+                    <option value="Leopardo">Leopardo</option>
+                    <option value="Tortuga">Tortuga</option>
+                    <option value="Cocodrilo">Cocodrilo</option>
+                    <option value="Pajaro">Pajaro</option>
+                </select>
+                <span asp-validation-for="animal.Edad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="animal.Edad" class="control-label"></label>
+                <input asp-for="animal.Edad" class="form-control" />
+                <span asp-validation-for="animal.Edad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="animal.Diagnostico" class="control-label"></label>
+                <input asp-for="animal.Diagnostico" class="form-control" />
+                <span asp-validation-for="animal.Diagnostico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-page="Index">Regresar a la lista</a>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

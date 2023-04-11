@@ -1,0 +1,101 @@
+﻿@page
+@using Nueva_Veterinaria.Models
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Lista de pacientes";
+}
+<style>
+    #animalsTable {
+        background: linear-gradient(to right, rgba(255,255,255, 0.7) 0 100%), url(/img/vet-logo.png);
+        background-size: 400px 400px;
+        background-position: 50% 75%;
+        background-repeat: no-repeat;
+    }
+</style>
+
+<h1>Lista de pacientes</h1>
+<p>
+    <a asp-page="Create">Crear nuevo paciente</a>
+</p>
+
+<table id="animalsTable" class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayName("Nombre")
+            </th>
+            <th>
+                @Html.DisplayName("Especie")
+            </th>
+            <th>
+                @Html.DisplayName("Edad")
+            </th>
+            <th>
+                @Html.DisplayName("Diagnostico")
+            </th>
+            <th>
+                @Html.DisplayName("Ingreso")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody style="background-image: url("./img/vet-logo.png");">
+        @foreach (var item in Model.Animals)
+        {
+            <tr>
+                <td class="col-md-1">
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td class="col-md-1">
+                    @Html.DisplayFor(modelItem => item.Especie)
+                </td>
+                <td class="col-md-1">
+                    @Html.DisplayFor(modelItem => item.Edad)
+                </td>
+                <td class="col-md-2">
+                    @Html.DisplayFor(modelItem => item.Diagnostico)
+                </td>
+                <td class="col-md-1">
+                    @Html.DisplayFor(modelItem => item.FechaIngreso)
+                </td>
+                <td class="col-md-2">
+                    <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-secondary">Editar</a>
+                    <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-info">Detalles</a>
+                    <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-danger">Borrar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        $('#animalsTable').DataTable({
+            "language" : {
+                "decimal": "",
+                "emptyTable": "No hay datos disponibles en la tabla",
+                "info": "Mostrando del _START_ al _END_ de _TOTAL_ registros",
+                "infoEmpty": "Mostrando del 0 al 0 de 0 registros",
+                "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "loadingRecords": "Cargando...",
+                "processing": "",
+                "search": "Buscar:",
+                "zeroRecords": "No se encontraron coincidencias",
+                "paginate": {
+                    "first": "Primera",
+                    "last": "Ultima",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                },
+                "aria": {
+                    "sortAscending": ": activar para ordenar la columna ascendentemente",
+                    "sortDescending": ": activar para ordenar la columna descendentemente"
+                }
+            }
+        });
+    });
+</script>
